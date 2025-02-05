@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Demo.Migrations
+namespace Demo.Data.Migrations
 {
     [DbContext(typeof(CompanyDbContext))]
-    [Migration("20250205112349_Second")]
-    partial class Second
+    [Migration("20250205122047_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,22 +27,34 @@ namespace Demo.Migrations
 
             modelBuilder.Entity("Demo.Data.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Code")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Code"));
 
                     b.Property<int?>("Age")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("EmailAdress")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Salary")
-                        .HasColumnType("float");
+                    b.Property<string>("Name")
+                        .HasColumnType("varchar");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("decimal(12,2)");
+
+                    b.HasKey("Code");
 
                     b.ToTable("Employees");
                 });
