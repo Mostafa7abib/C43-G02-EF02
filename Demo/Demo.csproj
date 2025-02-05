@@ -15,4 +15,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="EFCSession2G02FluentAPIS">
+      <HintPath>..\..\EFCSession2G02FluentAPIS\EFCSession2G02FluentAPIS\bin\Debug\net8.0\EFCSession2G02FluentAPIS.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
